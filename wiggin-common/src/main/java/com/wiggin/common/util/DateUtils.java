@@ -22,6 +22,17 @@ public class DateUtils {
 
 	/**
 	 * 
+	 * @date 2017年1月21日 下午11:40:30
+	 * @author wiggin
+	 * @Description: 构造私有
+	 *
+	 */
+	private DateUtils(){
+		
+	}
+	
+	/**
+	 * 
 	 * @date 2017年1月21日 下午11:18:45
 	 * @author wiggin
 	 * @Description: 获取当前系统时间

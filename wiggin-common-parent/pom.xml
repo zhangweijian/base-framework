@@ -16,21 +16,18 @@
 		<!-- 公共项目 projects -->
 		<wiggin-common.version>1.0-SNAPSHOT</wiggin-common.version>
 		<wiggin-common-config.version>1.0-SNAPSHOT</wiggin-common-config.version>
-		<wiggin-common-core.version>1.0-SNAPSHOT</wiggin-common-core.version>
 		<wiggin-common-web.version>1.0-SNAPSHOT</wiggin-common-web.version>
 
-		<wiggin-demo.version>1.0-SNAPSHOT</wiggin-demo.version>
+		<!-- 服务接口 projects -->
+		<wiggin-service.version>1.0-SNAPSHOT</wiggin-service.version>
 
-		<!-- facade projects -->
-		<wiggin-facade-user.version>1.0-SNAPSHOT</wiggin-facade-user.version>
-
-		<!-- service projects -->
-		<wiggin-service-user.version>1.0-SNAPSHOT</wiggin-service-user.version>
+		<!-- 服务接口实现 projects -->
+		<wiggin-serviceImpl.version>1.0-SNAPSHOT</wiggin-serviceImpl.version>
 
 		<!-- web projects -->
 		<wiggin-web.version>1.0-SNAPSHOT</wiggin-web.version>
 
-		<!-- frameworks -->
+		<!-- spring frameworks -->
 		<springframework.version>4.0.6.RELEASE</springframework.version>
 
 		<!-- jackson -->
@@ -164,8 +161,29 @@
 				<artifactId>jackson-annotations</artifactId>
 				<version>${jackson.version}</version>
 			</dependency>
-
 			<!-- jackson end -->
+
+			<!-- dubbo begin -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>2.5.3</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>spring</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- dubbo end -->
+
+			<!-- zkclient begin -->
+			<dependency>
+				<groupId>com.101tec</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>0.3</version>
+			</dependency>
+			<!-- zkclient end -->
 
 			<!-- Apache begin -->
 			<dependency>
@@ -175,11 +193,27 @@
 			</dependency>
 			<!-- Apache end -->
 
+			<!-- servlet begin -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- servlet end -->
 		</dependencies>
 
 	</dependencyManagement>
 
 	<build>
+		<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
 				<!-- 发布插件 -->

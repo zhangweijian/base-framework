@@ -32,6 +32,17 @@ public class JsonUtil {
 	
 	/**
 	 * 
+	 * @date 2017年1月21日 下午11:40:30
+	 * @author wiggin
+	 * @Description: 构造私有
+	 *
+	 */
+	private JsonUtil(){
+		
+	}
+	
+	/**
+	 * 
 	 * @date 2017年1月21日 下午10:31:14
 	 * @author wiggin
 	 * @Description: 将对象转成json
