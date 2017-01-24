@@ -1,8 +1,9 @@
 *.classpath
 *.project
-settings/*
-target/*
+*settings/
+*target/
 RemoteSystemsTempFiles/*
 .recommenders/*
 .metadata/*
+*test/
 
