@@ -208,6 +208,23 @@
 				<scope>provided</scope>
 			</dependency>
 			<!-- servlet end -->
+
+			<!-- Mysql Driver Begin -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.40</version>
+			</dependency>
+			<!-- Mysql Driver End -->
+
+			<!-- 阿里数据库连接池 begin -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>0.2.23</version>
+			</dependency>
+			<!-- 阿里数据库连接池 end -->
+
 		</dependencies>
 
 	</dependencyManagement>
