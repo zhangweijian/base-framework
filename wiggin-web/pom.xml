@@ -12,6 +12,7 @@
 	<artifactId>wiggin-web</artifactId>
 	<version>${wiggin-web.version}</version>
 	<name>wiggin-web</name>
+	<packaging>war</packaging> 
 
 	<build>
 		<finalName>wiggin-web</finalName>
