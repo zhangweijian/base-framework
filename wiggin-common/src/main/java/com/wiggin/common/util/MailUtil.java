@@ -65,8 +65,6 @@ public class MailUtil {
 
 		Properties properties = PropertiesUtils.loadProperties("config/properties/mail.properties");
 
-		logger.debug("properties...:{}",JsonUtil.toJsonString(properties));
-		
 		Authenticator authenticator = new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
@@ -132,7 +130,6 @@ public class MailUtil {
 
 		} catch (Exception e) {
 			logger.error("send mail fail... :{}",JsonUtil.toJsonString(e));
-			e.printStackTrace();
 		} 
 	}
 }
