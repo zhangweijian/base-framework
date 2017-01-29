@@ -225,6 +225,13 @@
 			</dependency>
 			<!-- 阿里数据库连接池 end -->
 
+		    <!-- 邮件发送 javaMail begin -->
+			<dependency>
+			    <groupId>javax.mail</groupId>
+			    <artifactId>mail</artifactId>
+			    <version>1.4.7</version>
+			</dependency>
+		    <!-- 邮件发送 javaMail end -->
 		</dependencies>
 
 	</dependencyManagement>
