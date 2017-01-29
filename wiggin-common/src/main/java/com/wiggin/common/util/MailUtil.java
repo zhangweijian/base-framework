@@ -41,7 +41,7 @@ import com.wiggin.common.util.bean.SendMailBean;
 public class MailUtil {
 
 	private static Logger logger = LoggerFactory.getLogger(MailUtil.class);
-	
+
 	/**
 	 * 
 	 * @date 2017年1月28日 上午12:25:54
@@ -87,49 +87,50 @@ public class MailUtil {
 	 *
 	 */
 	public static void sendMail(SendMailBean sendMailBean) {
-		
+
 		if (logger.isDebugEnabled()) {
-			logger.debug("sendMail sendMailBean :{}",JsonUtil.toJsonString(sendMailBean));
+			logger.debug("sendMail sendMailBean :{}", JsonUtil.toJsonString(sendMailBean));
 		}
-		
+
 		String from = PropertiesUtils.loadProperties("config/properties/mail.properties").getProperty("mail.from.addr");
-		
+
 		Session session = init();
 		Message msg = new MimeMessage(session);
-		
+
 		try {
-			
+
 			msg.setFrom(new InternetAddress(from));
 			msg.setRecipients(Message.RecipientType.TO, sendMailBean.getToAddress());
 			msg.setSubject(sendMailBean.getSubject());
 			msg.setSentDate(DateUtils.now());
-			
-			//添加邮件附件
-			if ( !StringUtils.isEmpty(sendMailBean.getAttachment()) ) {
-		         
-				//主体消息
-				BodyPart msgBodyPart = new MimeBodyPart();
-				msgBodyPart.setContent(sendMailBean.getContent(),"text/html;charset=utf-8");
-		        Multipart multipart = new MimeMultipart();
-		        multipart.addBodyPart(msgBodyPart);
 
-		        //附件
+			// 添加邮件附件
+			if (!StringUtils.isEmpty(sendMailBean.getAttachment())) {
+
+				// 主体消息
+				BodyPart msgBodyPart = new MimeBodyPart();
+				msgBodyPart.setContent(sendMailBean.getContent(), "text/html;charset=utf-8");
+				Multipart multipart = new MimeMultipart();
+				multipart.addBodyPart(msgBodyPart);
+
+				// 附件
 				BodyPart fileBodyPart = new MimeBodyPart();
 				DataSource source = new FileDataSource(sendMailBean.getAttachment());
 				fileBodyPart.setDataHandler(new DataHandler(source));
-				String fileName = sendMailBean.getAttachment().substring(sendMailBean.getAttachment().lastIndexOf("/")+1);
-				fileBodyPart.setFileName(MimeUtility.encodeText(fileName));//MimeUtility.encodeText防止中文乱码
-		        multipart.addBodyPart(fileBodyPart);
-		        msg.setContent(multipart);
+				String fileName = sendMailBean.getAttachment()
+						.substring(sendMailBean.getAttachment().lastIndexOf("/") + 1);
+				fileBodyPart.setFileName(MimeUtility.encodeText(fileName));// MimeUtility.encodeText防止中文乱码
+				multipart.addBodyPart(fileBodyPart);
+				msg.setContent(multipart);
 			} else {
-				msg.setContent(sendMailBean.getContent(),"text/html;charset=utf-8");
+				msg.setContent(sendMailBean.getContent(), "text/html;charset=utf-8");
 			}
-			
-			//发送邮件
-	       Transport.send(msg);
+
+			// 发送邮件
+			Transport.send(msg);
 
 		} catch (Exception e) {
-			logger.error("send mail fail... :{}",JsonUtil.toJsonString(e));
-		} 
+			logger.error("send mail fail... :{}", JsonUtil.toJsonString(e));
+		}
 	}
 }
